@@ -215,7 +215,7 @@
           </div>
           <div class="col-md-7 order-md-1">
             <h1 class="display-5 mb-3">Halo, saya Zahra Shafarani,<br /></h1>
-            <p class="redup mb-4" style="max-width: 46ch">selamat datang!.</p>
+            <p class="redup mb-4" style="max-width: 46ch">selamat datang</p>
             <a href="#proyek" class="tombol tombol-isi me-2 mb-2">Lihat proyek</a>
             <a href="files/cv.pdf" class="tombol tombol-garis mb-2" download>Unduh CV</a>
           </div>
@@ -234,7 +234,6 @@
             serta teknik dalam membuat karya. Bagi saya, setiap karya merupakan bagian dari proses untuk mengembangkan kemampuan, mengeksplorasi kreativitas, dan menemukan gaya yang sesuai dengan diri saya. Portofolio ini berisi beberapa
             karya desain dan digital art yang saya buat selama proses belajar dan bereksplorasi.
           </p>
-         
         </div>
       </div>
     </section>
@@ -294,11 +293,15 @@
           <div class="col-md-5">
             <h2 class="mb-3">Kerja sama yuk</h2>
             <p class="redup mb-1">tuliskan saran dan kritik kalian</p>
-           
-              <input class="form-control mb-3" type="text" name="Nama" placeholder="Nama" required />
-              <input class="form-control mb-3" type="email" name="Email" placeholder="Email" required />
-              <textarea class="form-control mb-3" name="Pesan" rows="4" placeholder="Pesan" required></textarea>
+
+            <!-- Pesan dikirim ke Google Sheets. Panduan ada di file kode-google-sheets.gs -->
+            <form id="form-kontak" class="mt-3">
+              <input class="form-control mb-3" type="text" name="nama" placeholder="Nama" required />
+              <input class="form-control mb-3" type="email" name="email" placeholder="Email" required />
+              <textarea class="form-control mb-3" name="pesan" rows="4" placeholder="Pesan" required></textarea>
+              <input type="text" name="website" tabindex="-1" autocomplete="off" style="position: absolute; left: -9999px" aria-hidden="true" />
               <button class="tombol tombol-isi" type="submit">Kirim pesan</button>
+              <p id="status-form" class="small mt-3 mb-0" role="status"></p>
             </form>
           </div>
         </div>
@@ -309,10 +312,10 @@
       <div class="container d-flex justify-content-between align-items-center">
         <span class="redup">© <span id="tahun"></span> Zahra Shafarani</span>
         <!-- Ganti # dengan link akun kamu -->
-       <span class="sosmed">
-  <a href="https://www.tiktok.com/@ranib0wy" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
-  <a href="https://www.instagram.com/raniivv" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-</span>
+        <span class="sosmed">
+          <a href="https://www.tiktok.com/@ranib0wy" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          <a href="https://www.instagram.com/@raniivv" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        </span>
       </div>
     </footer>
 
@@ -331,6 +334,29 @@
         });
       });
       document.getElementById("tahun").textContent = new Date().getFullYear();
+
+      // ===== FORM KONTAK -> GOOGLE SHEETS =====
+      // Tempel URL Web App dari Google Apps Script di sini (langkahnya ada di kode-google-sheets.gs)
+      var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx3Ebhv-1ryBevbdegL9DNWbiybJiVUhe6kpMyB-jP8Ykv5nc78j0AGypt7lTsRXvkN6g/exec";
+
+      var form = document.getElementById("form-kontak");
+      var status = document.getElementById("status-form");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (SCRIPT_URL.indexOf("GANTI") === 0) {
+          status.textContent = "Form belum disambungkan ke Google Sheets.";
+          return;
+        }
+        status.textContent = "Mengirim...";
+        fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", body: new URLSearchParams(new FormData(form)) })
+          .then(function () {
+            status.textContent = "Terima kasih, pesanmu sudah terkirim.";
+            form.reset();
+          })
+          .catch(function () {
+            status.textContent = "Gagal mengirim. Coba lagi nanti.";
+          });
+      });
     </script>
   </body>
 </html>
