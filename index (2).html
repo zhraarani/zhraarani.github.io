@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zahra Shafarani – Portofolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      /* ===== PENGATURAN WARNA & FONT: ubah di sini saja ===== */
+      :root {
+        --warna-utama: #ffe585; /* kuning aksen (placeholder foto, tombol) */
+        --warna-latar: #fffae0; /* latar halaman */
+        --warna-latar-2: #fff1b8; /* latar section selang-seling */
+        --warna-teks: #3d3417; /* teks utama (coklat tua) */
+        --warna-teks-2: #7c7048; /* teks sekunder */
+        --warna-garis: #e6d68a; /* garis tipis */
+        --font-judul: "Bricolage Grotesque", Georgia, sans-serif;
+        --font-isi: "Figtree", system-ui, sans-serif;
+      }
+      body {
+        font-family: var(--font-isi);
+        background: var(--warna-latar);
+        color: var(--warna-teks);
+        line-height: 1.65;
+        scroll-padding-top: 56px;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: var(--font-judul);
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        line-height: 1.15;
+      }
+      a {
+        color: var(--warna-teks);
+      }
+      .redup {
+        color: var(--warna-teks-2);
+      }
+      section {
+        padding: 5rem 0;
+      }
+      .alt {
+        background: var(--warna-latar-2);
+      }
+      :focus-visible {
+        outline: 2px solid var(--warna-teks);
+        outline-offset: 3px;
+      }
+
+      /* Navbar tipis, tanpa logo */
+      .navbar {
+        background: var(--warna-latar);
+        border-bottom: 1px solid var(--warna-garis);
+        padding: 0.35rem 0;
+      }
+      .navbar .nav-link {
+        color: var(--warna-teks-2);
+        font-size: 0.92rem;
+        padding: 0.4rem 0.9rem;
+      }
+      .navbar .nav-link:hover {
+        color: var(--warna-teks);
+      }
+      .navbar-toggler {
+        border: 0;
+        padding: 0.25rem;
+        margin-left: auto;
+        box-shadow: none !important;
+      }
+
+      /* Tombol */
+      .tombol {
+        display: inline-block;
+        padding: 0.55rem 1.3rem;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        border: 1px solid var(--warna-teks);
+      }
+      .tombol-isi {
+        background: var(--warna-teks);
+        color: var(--warna-latar);
+      }
+      .tombol-isi:hover {
+        background: #000;
+        color: #fff;
+      }
+      .tombol-garis {
+        background: transparent;
+        color: var(--warna-teks);
+      }
+      .tombol-garis:hover {
+        background: var(--warna-utama);
+      }
+
+      /* Kotak foto: foto otomatis menimpa placeholder bila file ada di folder img/ */
+      .ph {
+        position: relative;
+        background: var(--warna-utama);
+        border-radius: 10px;
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+        color: var(--warna-teks-2);
+        font-size: 0.9rem;
+      }
+      /* Kalau ada foto, ukurannya mengikuti foto asli (tidak dipotong) */
+      .ph:has(img) {
+        display: block;
+        aspect-ratio: auto;
+        background: none;
+        font-size: 0;
+        line-height: 0;
+      }
+      .ph img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .ph-hero img {
+        width: auto;
+        max-width: 100%;
+        max-height: 80vh;
+        margin: 0 auto;
+        border-radius: 10px;
+      }
+      .ph-hero {
+        aspect-ratio: 1/1;
+      }
+      .ph-proyek {
+        aspect-ratio: 16/10;
+      }
+
+      /* Proyek */
+      .filter-btn {
+        border: 1px solid var(--warna-garis);
+        background: transparent;
+        border-radius: 999px;
+        padding: 0.2rem 0.95rem;
+        font-size: 0.88rem;
+        margin: 0 0.35rem 0.5rem 0;
+        color: var(--warna-teks-2);
+      }
+      .filter-btn:hover {
+        border-color: var(--warna-teks);
+        color: var(--warna-teks);
+      }
+      .filter-btn.aktif {
+        background: var(--warna-teks);
+        border-color: var(--warna-teks);
+        color: var(--warna-latar);
+      }
+      .proyek h5 {
+        font-size: 1.1rem;
+        margin: 0.8rem 0 0.2rem;
+      }
+
+      /* Kontak */
+      .form-control {
+        background: var(--warna-latar);
+        border: 1px solid var(--warna-garis);
+        border-radius: 6px;
+        color: var(--warna-teks);
+      }
+      .form-control:focus {
+        background: #fff;
+        border-color: var(--warna-teks);
+        box-shadow: none;
+      }
+
+      footer {
+        border-top: 1px solid var(--warna-garis);
+        padding: 1.75rem 0;
+        font-size: 0.9rem;
+      }
+      footer .sosmed a {
+        font-size: 1.25rem;
+        margin-left: 1rem;
+        color: var(--warna-teks-2);
+      }
+      footer .sosmed a:hover {
+        color: var(--warna-teks);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm sticky-top">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Buka menu"><i class="bi bi-list fs-3"></i></button>
+        <div class="collapse navbar-collapse justify-content-end" id="menu">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="#hero">Beranda</a></li>
+            <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+            <li class="nav-item"><a class="nav-link" href="#proyek">Proyek</a></li>
+            <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-md-5 order-md-2">
+            <!-- FOTO: simpan di folder img/ dengan nama foto-hero.jpg -->
+            <div class="ph ph-hero">foto kamu<img src="img/me.jpeg" alt="" onerror="this.remove()" /></div>
+          </div>
+          <div class="col-md-7 order-md-1">
+            <h1 class="display-5 mb-3">Halo, saya Zahra Shafarani,<br /></h1>
+            <p class="redup mb-4" style="max-width: 46ch">selamat datang!.</p>
+            <a href="#proyek" class="tombol tombol-isi me-2 mb-2">Lihat proyek</a>
+            <a href="files/cv.pdf" class="tombol tombol-garis mb-2" download>Unduh CV</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TENTANG -->
+    <section id="tentang" class="alt">
+      <div class="container">
+        <div style="max-width: 640px">
+          <h2 class="mb-3">Tentang saya</h2>
+          <p class="redup">
+            Halo! Saya Zahra Shafarani, seorang pelajar yang saat ini menempuh pendidikan di SMK dengan jurusan Pengembangan Perangkat Lunak dan Gim (PPLG). Meskipun saya mempelajari bidang pemrograman dan teknologi, saya juga memiliki
+            ketertarikan yang cukup besar pada dunia menggambar, desain, dan digital art. Saya menikmati proses menuangkan ide dan kreativitas ke dalam bentuk visual. Saat ini saya masih dalam tahap belajar dan terus mencoba berbagai gaya
+            serta teknik dalam membuat karya. Bagi saya, setiap karya merupakan bagian dari proses untuk mengembangkan kemampuan, mengeksplorasi kreativitas, dan menemukan gaya yang sesuai dengan diri saya. Portofolio ini berisi beberapa
+            karya desain dan digital art yang saya buat selama proses belajar dan bereksplorasi.
+          </p>
+          <ul class="redup ps-3 mt-3 mb-0">
+            <li>Poin pertama</li>
+            <li>Poin kedua</li>
+            <li>Poin ketiga</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYEK -->
+    <section id="proyek">
+      <div class="container">
+        <h2 class="mb-4">Proyek pilihan</h2>
+        <div class="mb-4">
+          <button class="filter-btn aktif" data-filter="all">Semua</button>
+          <button class="filter-btn" data-filter="design">Design</button>
+          <button class="filter-btn" data-filter="digital-art">Digital Art</button>
+          <!-- tambah kategori: <button class="filter-btn" data-filter="nama">Nama</button> -->
+        </div>
+        <div class="row g-4 g-md-5">
+          <!-- Salin satu blok .proyek untuk menambah proyek. data-kategori: design atau digital-art (boleh keduanya, pisah dengan spasi) -->
+          <div class="col-md-6 proyek" data-kategori="design">
+            <div class="ph ph-proyek">foto proyek 1<img src="img/1.jpeg" alt="" onerror="this.remove()" /></div>
+            <h5>Food Bazaar Menu Design</h5>
+            <p class="redup small mb-0">
+              Proyek desain menu makanan dan minuman untuk kegiatan bazar kelas. Desain ini menggabungkan tipografi dekoratif, warna cerah, serta elemen visual bertema piknik musim panas untuk menciptakan tampilan yang menarik dan sesuai
+              dengan suasana bazar. Proyek ini menjadi penerapan kreativitas dalam merancang media promosi yang informatif sekaligus menarik secara visual.
+            </p>
+          </div>
+          <div class="col-md-6 proyek" data-kategori="digital-art">
+            <div class="ph ph-proyek">foto proyek 2<img src="img/2.jpeg" alt="" onerror="this.remove()" /></div>
+            <h5>Mochi dango</h5>
+            <p class="redup small mb-0">
+              Ilustrasi digital bertema mochi dango yang mengeksplorasi bentuk, warna, dan efek glossy untuk menciptakan visual makanan yang menarik. Perpaduan warna cerah dan detail dekoratif memberikan karakter unik pada karya, sekaligus
+              menjadi media untuk mengembangkan kreativitas dan keterampilan ilustrasi digital.
+            </p>
+          </div>
+          <div class="col-md-6 proyek" data-kategori="design">
+            <div class="ph ph-proyek">foto proyek 3<img src="img/3.jpeg" alt="" onerror="this.remove()" /></div>
+            <h5>Summer K-Pop Fan Edit</h5>
+            <p class="redup small mb-0">
+              Desain fan edit bertema musim panas yang menampilkan foto idol K-pop melalui perpaduan tipografi dekoratif, elemen tropis, dan warna-warna cerah. Penataan foto, pemilihan ornamen, serta kombinasi elemen grafis dirancang untuk
+              menciptakan komposisi yang ekspresif dengan nuansa summer yang ceria dan playful.
+            </p>
+          </div>
+          <div class="col-md-6 proyek" data-kategori="digital-art">
+            <div class="ph ph-proyek">foto proyek 4<img src="img/4.jpeg" alt="" onerror="this.remove()" /></div>
+            <h5>blueberry cake</h5>
+            <p class="redup small mb-0">
+              Ilustrasi digital bertema blueberry cake yang mengeksplorasi perpaduan warna, detail dekoratif, dan bentuk untuk menghadirkan visual dessert yang menarik. Karya ini berfokus pada pengembangan kreativitas melalui pengolahan
+              elemen visual menjadi ilustrasi yang memiliki karakter dan daya tarik tersendiri.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section id="kontak" class="alt">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-md-5">
+            <h2 class="mb-3">Kerja sama yuk</h2>
+            <p class="redup mb-1">tuliskan saran dan kritik kalian</p>
+           
+              <input class="form-control mb-3" type="text" name="Nama" placeholder="Nama" required />
+              <input class="form-control mb-3" type="email" name="Email" placeholder="Email" required />
+              <textarea class="form-control mb-3" name="Pesan" rows="4" placeholder="Pesan" required></textarea>
+              <button class="tombol tombol-isi" type="submit">Kirim pesan</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container d-flex justify-content-between align-items-center">
+        <span class="redup">© <span id="tahun"></span> Zahra Shafarani</span>
+        <!-- Ganti # dengan link akun kamu -->
+       <span class="sosmed">
+  <a href="https://www.tiktok.com/@ranib0wy" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+  <a href="https://www.instagram.com/raniivv" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+</span>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.querySelectorAll(".filter-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll(".filter-btn").forEach(function (b) {
+            b.classList.remove("aktif");
+          });
+          btn.classList.add("aktif");
+          var f = btn.dataset.filter;
+          document.querySelectorAll(".proyek").forEach(function (p) {
+            p.style.display = f === "all" || p.dataset.kategori.split(" ").indexOf(f) > -1 ? "" : "none";
+          });
+        });
+      });
+      document.getElementById("tahun").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
