@@ -3,359 +3,877 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Zahra Shafarani – Portofolio</title>
+    <title>My Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&family=Quicksand:wght@500;600&family=Bowlby+One&family=Gloock&display=swap" rel="stylesheet" />
     <style>
-      /* ===== PENGATURAN WARNA & FONT: ubah di sini saja ===== */
       :root {
-        --warna-utama: #ffe585; /* kuning aksen (placeholder foto, tombol) */
-        --warna-latar: #fffae0; /* latar halaman */
-        --warna-latar-2: #fff1b8; /* latar section selang-seling */
-        --warna-teks: #3d3417; /* teks utama (coklat tua) */
-        --warna-teks-2: #7c7048; /* teks sekunder */
-        --warna-garis: #e6d68a; /* garis tipis */
-        --font-judul: "Bricolage Grotesque", Georgia, sans-serif;
-        --font-isi: "Figtree", system-ui, sans-serif;
+        --blue: #0b4fb3;
+        --brown: #6b4300;
+        --pink: #ff2d87;
+        --green: #9be32a;
+        --purple: #b565f0;
+        --sky: #43d1f7;
+        --line: #b8860b;
+      }
+      html {
+        scroll-behavior: smooth;
       }
       body {
-        font-family: var(--font-isi);
-        background: var(--warna-latar);
-        color: var(--warna-teks);
-        line-height: 1.65;
-        scroll-padding-top: 56px;
+        font-family: "Quicksand", sans-serif;
+        color: var(--brown);
+        overflow-x: hidden;
+        background: linear-gradient(180deg, #fbd77f 0%, #fde9b0 45%, #fbd77f 100%);
       }
-      h1,
-      h2,
-      h3,
-      h4,
-      h5 {
-        font-family: var(--font-judul);
-        font-weight: 700;
-        letter-spacing: -0.015em;
-        line-height: 1.15;
+      /* NAVBAR & FOOTER */
+      .bar {
+        background: linear-gradient(180deg, #3fd0f7, #b5dcff);
       }
-      a {
-        color: var(--warna-teks);
+      .bar.navbar {
+        min-height: 78px;
+        padding: 0.5rem 0;
+        overflow: visible;
       }
-      .redup {
-        color: var(--warna-teks-2);
+      .navbar .container,
+      .navbar-collapse {
+        overflow: visible;
       }
-      section {
-        padding: 5rem 0;
+      .navbar-nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
       }
-      .alt {
-        background: var(--warna-latar-2);
+      .navbar-nav .nav-link {
+        font-family: "Comfortaa", sans-serif;
+        font-size: clamp(1.05rem, 2.3vw, 1.5rem);
+        line-height: 1.5;
+        white-space: nowrap;
+        color: var(--blue);
+        padding: 0.35rem clamp(0.5rem, 1.4vw, 1rem);
       }
-      :focus-visible {
-        outline: 2px solid var(--warna-teks);
-        outline-offset: 3px;
+      @media (max-width: 767px) {
+        .navbar-collapse {
+          background: #ffffffb0;
+          border-radius: 14px;
+          margin-top: 0.5rem;
+          padding: 0.4rem;
+        }
+        .navbar-nav {
+          align-items: center;
+        }
       }
-
-      /* Navbar tipis, tanpa logo */
-      .navbar {
-        background: var(--warna-latar);
-        border-bottom: 1px solid var(--warna-garis);
-        padding: 0.35rem 0;
-      }
-      .navbar .nav-link {
-        color: var(--warna-teks-2);
-        font-size: 0.92rem;
-        padding: 0.4rem 0.9rem;
-      }
-      .navbar .nav-link:hover {
-        color: var(--warna-teks);
+      .navbar-nav .nav-link:hover {
+        color: #ff2d87;
       }
       .navbar-toggler {
         border: 0;
-        padding: 0.25rem;
-        margin-left: auto;
-        box-shadow: none !important;
+        background: #fff8;
       }
-
-      /* Tombol */
-      .tombol {
-        display: inline-block;
-        padding: 0.55rem 1.3rem;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 0.95rem;
+      footer.bar {
+        background: linear-gradient(0deg, #3fd0f7, #b5dcff);
+        font-family: "Comfortaa", sans-serif;
+        color: var(--blue);
+        font-size: 1.8rem;
+      }
+      footer a {
+        color: #111;
+        font-size: 2.4rem;
+        margin-left: 0.9rem;
         text-decoration: none;
-        border: 1px solid var(--warna-teks);
       }
-      .tombol-isi {
-        background: var(--warna-teks);
-        color: var(--warna-latar);
-      }
-      .tombol-isi:hover {
-        background: #000;
-        color: #fff;
-      }
-      .tombol-garis {
-        background: transparent;
-        color: var(--warna-teks);
-      }
-      .tombol-garis:hover {
-        background: var(--warna-utama);
-      }
-
-      /* Kotak foto: foto otomatis menimpa placeholder bila file ada di folder img/ */
-      .ph {
+      /* SECTION */
+      .sec {
         position: relative;
-        background: var(--warna-utama);
-        border-radius: 10px;
+        padding: 4rem 0;
+        border-top: 2px solid var(--line);
+        background: radial-gradient(ellipse at 50% 40%, #fff6d6 0%, rgba(255, 246, 214, 0) 65%);
+      }
+      #hero {
+        border-top: 0;
+        padding: 5rem 0;
+        background: radial-gradient(ellipse at 50% 90%, #fff6d6, rgba(255, 246, 214, 0) 70%);
+      }
+      .sec .container {
+        position: relative;
+        z-index: 2;
+      }
+      .stars-layer {
+        position: absolute;
+        inset: 0;
         overflow: hidden;
-        display: grid;
-        place-items: center;
-        color: var(--warna-teks-2);
-        font-size: 0.9rem;
+        z-index: 1;
+        pointer-events: none;
       }
-      /* Kalau ada foto, ukurannya mengikuti foto asli (tidak dipotong) */
-      .ph:has(img) {
-        display: block;
-        aspect-ratio: auto;
-        background: none;
-        font-size: 0;
-        line-height: 0;
+      .star {
+        position: absolute;
+        aspect-ratio: 1;
+        background-color: var(--c);
+        background-image: radial-gradient(rgba(0, 0, 0, 0.85) 26%, transparent 29%);
+        background-size: 9px 9px;
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
       }
-      .ph img {
-        display: block;
-        width: 100%;
+      .spark {
+        position: absolute;
+        color: #fff;
+        text-shadow: 0 0 12px #fff;
+        z-index: 1;
+      }
+      /* JUDUL STIKER (teks cadangan kalau gambar belum ada) */
+      .ttl {
+        display: inline-block;
+        line-height: 1;
+        transform: rotate(-3deg);
+        -webkit-text-stroke: 2px #000;
+        paint-order: stroke fill;
+        font-family: "Gloock", serif;
+        font-size: clamp(2.6rem, 9vw, 5.5rem);
+        letter-spacing: -0.04em;
+        margin: 0;
+      }
+      .ttl img {
+        max-width: 100%;
         height: auto;
       }
-      .ph-hero img {
-        width: auto;
-        max-width: 100%;
-        max-height: 80vh;
+      .oval {
+        background: #fffff0;
+        border: 2px solid #111;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      /* HERO */
+      .hero-oval {
+        width: min(100%, 900px);
+        aspect-ratio: 2.1/1;
         margin: 0 auto;
-        border-radius: 10px;
       }
-      .ph-hero {
-        aspect-ratio: 1/1;
+      .hero-oval .ttl {
+        font-size: clamp(2.6rem, 11vw, 7.5rem);
+        -webkit-text-stroke: 0;
+        transform: rotate(-3deg);
+        font-family: "Gloock", serif;
+        letter-spacing: -0.06em;
+        white-space: nowrap;
       }
-      .ph-proyek {
-        aspect-ratio: 16/10;
+      .hero-oval .ttl span {
+        display: inline-block;
+        background: linear-gradient(180deg, #ff6fb0 0%, #ff1f80 55%, #d10d68 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        transform-origin: center bottom;
       }
-
-      /* Proyek */
-      .filter-btn {
-        border: 1px solid var(--warna-garis);
-        background: transparent;
-        border-radius: 999px;
-        padding: 0.2rem 0.95rem;
-        font-size: 0.88rem;
-        margin: 0 0.35rem 0.5rem 0;
-        color: var(--warna-teks-2);
-      }
-      .filter-btn:hover {
-        border-color: var(--warna-teks);
-        color: var(--warna-teks);
-      }
-      .filter-btn.aktif {
-        background: var(--warna-teks);
-        border-color: var(--warna-teks);
-        color: var(--warna-latar);
-      }
-      .proyek h5 {
-        font-size: 1.1rem;
-        margin: 0.8rem 0 0.2rem;
-      }
-
-      /* Kontak */
-      .form-control {
-        background: var(--warna-latar);
-        border: 1px solid var(--warna-garis);
-        border-radius: 6px;
-        color: var(--warna-teks);
-      }
-      .form-control:focus {
+      /* ABOUT */
+      .polaroid {
         background: #fff;
-        border-color: var(--warna-teks);
-        box-shadow: none;
+        padding: 0.9rem 0.9rem 2.6rem;
+        width: min(78%, 330px);
+        margin: 0 auto;
+        transform: rotate(-8deg);
+        box-shadow: 0 6px 14px #0003;
+        position: relative;
+        background-image: radial-gradient(#fde9a0 22%, transparent 24%);
+        background-size: 70px 70px;
+      }
+      .polaroid img {
+        width: 100%;
+        aspect-ratio: 4/5;
+        object-fit: cover;
+        display: block;
+        border: 2px solid #222;
+      }
+      .polaroid .nm {
+        position: absolute;
+        bottom: 0.5rem;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-weight: 700;
+        font-size: 1.5rem;
+        transform: rotate(4deg);
+        font-family: "Quicksand", sans-serif;
+        color: #4a2c00;
+      }
+      .box {
+        background: #fff;
+        border: 1.5px solid #333;
+        border-radius: 6px;
+        padding: 1rem 1.2rem;
+      }
+      .about-box {
+        min-height: 300px;
+        white-space: pre-line;
+      }
+      .about-ttl .ttl {
+        color: var(--green);
+      }
+      .about-ttl .oval {
+        padding: 0.2rem 1.6rem;
+        margin-left: -1.2rem;
+        vertical-align: bottom;
+      }
+      /* PROJECT */
+      .pill {
+        font-family: "Gloock", serif;
+        color: var(--purple);
+        background: #fffff0;
+        border: 1.5px solid #333;
+        border-radius: 50px;
+        padding: 0.1rem 1.4rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin: 0.2rem;
+      }
+      .pill.active {
+        background: var(--purple);
+        color: #fff;
+      }
+      .proj-ttl .ttl {
+        color: var(--purple);
+        -webkit-text-stroke: 2px #fff;
+      }
+      .pcard {
+        color: inherit;
+        text-decoration: none;
+        display: block;
+      }
+      .pcard .thumb {
+        background: #fff;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        width: 100%;
+      }
+      .pcard .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+      /* mode foto: contain = utuh di kotak, cover = dipotong, auto = kotak mengikuti tinggi foto */
+      .fit-cover .thumb img {
+        object-fit: cover;
+      }
+      .fit-auto .thumb {
+        aspect-ratio: auto !important;
+        background: transparent;
+        overflow: visible;
+        border-radius: 0;
+      }
+      .fit-auto .thumb img {
+        width: 100%;
+        height: auto;
+        max-height: 80vh;
+        object-fit: contain;
+        border-radius: 6px;
+        box-shadow: 0 6px 14px #0002;
+      }
+      .pcard p {
+        margin: 0.6rem 0 0;
+      }
+      /* ukuran sama persis desain asli (366x171 dan 468x327) */
+      .pcard.small .thumb {
+        aspect-ratio: 366/171;
+      }
+      .pcard.big .thumb {
+        aspect-ratio: 468/327;
+      }
+      .pcard.small p {
+        text-align: center;
+      }
+      .pcard.big {
+        display: flex;
+        align-items: center;
+        gap: 3%;
+      }
+      .pcard.big .thumb {
+        flex: 0 0 74.5%;
+      }
+      .pcard.big p {
+        margin: 0;
+      }
+      /* posisi: kecil di kiri, besar + deskripsi di kanan */
+      .prow {
+        display: grid;
+        grid-template-columns: 8fr 31fr 8fr 53fr;
+        align-items: center;
+        margin-bottom: 2.5rem;
+      }
+      .c-s {
+        grid-column: 2;
+      }
+      .c-b {
+        grid-column: 4;
+      }
+      @media (max-width: 767px) {
+        .prow {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        .c-s,
+        .c-b {
+          grid-column: 1;
+        }
+        .pcard.big {
+          display: block;
+        }
+        .pcard.big .thumb {
+          width: 100%;
+        }
+        .pcard.big p {
+          text-align: center;
+          margin-top: 0.6rem;
+        }
+      }
+      /* CONTACT */
+      .c-ttl .oval {
+        width: 100%;
+        padding: 1rem;
+      }
+      .c-ttl .ttl {
+        color: #7fdcff;
+        -webkit-text-stroke: 2px #1a6fb0;
+      }
+      .note {
+        margin-top: 1rem;
+        font-family: "Gloock", serif;
+        color: #8fb0ff;
+        font-size: 1.5rem;
+        line-height: 1.1;
+      }
+      .cform {
+        padding: 1.5rem;
+      }
+      .cform label {
+        display: block;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #5b4300;
+        margin: 0 0 0.15rem 0.2rem;
+      }
+      .cform input,
+      .cform textarea {
+        width: 100%;
+        border: 2px solid #c9a24d;
+        border-radius: 10px;
+        outline: 0;
+        background: #fffdf5;
+        font-size: 1.1rem;
+        color: #5b4300;
+        padding: 0.55rem 0.9rem;
+        margin-bottom: 1rem;
+        font-family: "Quicksand", sans-serif;
+        transition: 0.2s;
+      }
+      .cform input:focus,
+      .cform textarea:focus {
+        border-color: var(--pink);
+        box-shadow: 0 0 0 0.2rem #ff2d8730;
+        background: #fff;
+      }
+      .cform input::placeholder,
+      .cform textarea::placeholder {
+        color: #c4b48a;
+      }
+      .cform textarea {
+        resize: none;
+      }
+      .cform button {
+        border: 0;
+        background: var(--pink);
+        color: #fff;
+        border-radius: 50px;
+        padding: 0.3rem 1.6rem;
+        font-weight: 700;
+        float: right;
+      }
+      @media (max-width: 575px) {
+        .pill {
+          font-size: 1.2rem;
+        }
       }
 
-      footer {
-        border-top: 1px solid var(--warna-garis);
-        padding: 1.75rem 0;
-        font-size: 0.9rem;
+      /* ================= ANIMASI ================= */
+      @keyframes floaty {
+        0%,
+        100% {
+          transform: rotate(var(--r)) translateY(0);
+        }
+        50% {
+          transform: rotate(calc(var(--r) + 10deg)) translateY(-16px);
+        }
       }
-      footer .sosmed a {
-        font-size: 1.25rem;
-        margin-left: 1rem;
-        color: var(--warna-teks-2);
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.15;
+          scale: 0.5;
+          rotate: 0deg;
+        }
+        50% {
+          opacity: 1;
+          scale: 1.2;
+          rotate: 45deg;
+        }
       }
-      footer .sosmed a:hover {
-        color: var(--warna-teks);
+      @keyframes wave {
+        0%,
+        100% {
+          translate: 0 0;
+        }
+        50% {
+          translate: 0 -12px;
+        }
+      }
+      @keyframes pop {
+        from {
+          scale: 0.4;
+          opacity: 0;
+        }
+        to {
+          scale: 1;
+          opacity: 1;
+        }
+      }
+      @keyframes drop {
+        from {
+          translate: 0 -100%;
+          opacity: 0;
+        }
+        to {
+          translate: 0 0;
+          opacity: 1;
+        }
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 #ff2d8760;
+        }
+        50% {
+          box-shadow: 0 0 0 10px #ff2d8700;
+        }
+      }
+      @keyframes wiggle {
+        0%,
+        100% {
+          rotate: 0deg;
+        }
+        25% {
+          rotate: -4deg;
+        }
+        75% {
+          rotate: 4deg;
+        }
+      }
+      @keyframes shine {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 200% 50%;
+        }
+      }
+      .star {
+        transform: rotate(var(--r, 0deg));
+        animation: floaty var(--d, 6s) ease-in-out infinite;
+      }
+      .spark {
+        animation: twinkle 2.6s ease-in-out infinite;
+      }
+      .navbar {
+        animation: drop 0.7s ease both;
+      }
+      .navbar-nav .nav-link {
+        transition:
+          transform 0.25s,
+          color 0.25s;
+      }
+      .navbar-nav .nav-link:hover {
+        transform: translateY(-4px) scale(1.1);
+      }
+      .hero-oval {
+        animation: pop 1s cubic-bezier(0.2, 1.5, 0.4, 1) both;
+      }
+      .hero-oval .ttl span {
+        animation: wave 2.2s ease-in-out infinite;
+        animation-delay: calc(var(--i) * 0.12s);
+      }
+      .hero-oval .ttl span {
+        background-size: 100% 200%;
+      }
+      .reveal {
+        opacity: 0;
+        translate: 0 45px;
+        transition:
+          opacity 0.8s ease,
+          translate 0.8s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+      }
+      .reveal.in {
+        opacity: 1;
+        translate: 0 0;
+      }
+      .ttl {
+        transition: transform 0.3s;
+      }
+      .ttl:hover {
+        animation: wiggle 0.5s ease 2;
+      }
+      .polaroid {
+        transition:
+          transform 0.4s cubic-bezier(0.2, 1.4, 0.4, 1),
+          box-shadow 0.4s,
+          opacity 0.8s ease,
+          translate 0.8s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+      }
+      .polaroid:hover {
+        transform: rotate(-2deg) scale(1.05);
+        box-shadow: 0 14px 28px #0004;
+      }
+      .pcard .thumb {
+        transition:
+          transform 0.35s cubic-bezier(0.2, 1.4, 0.4, 1),
+          box-shadow 0.35s;
+      }
+      .pcard:hover .thumb {
+        transform: scale(1.04) rotate(-1.2deg);
+        box-shadow: 0 12px 24px #0003;
+      }
+      .pill {
+        transition:
+          transform 0.25s,
+          background 0.25s,
+          color 0.25s;
+      }
+      .pill:hover {
+        transform: translateY(-3px) scale(1.08) rotate(-2deg);
+      }
+      .cform button {
+        animation: pulse 2s infinite;
+        transition: transform 0.25s;
+      }
+      .cform button:hover {
+        transform: scale(1.1) rotate(-2deg);
+      }
+      footer a {
+        display: inline-block;
+        transition: transform 0.3s;
+      }
+      footer a:hover {
+        transform: scale(1.25) rotate(-10deg);
+        color: #ff2d87;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+        .reveal {
+          opacity: 1;
+          translate: none;
+        }
       }
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-sm sticky-top">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-md bar sticky-top">
       <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Buka menu"><i class="bi bi-list fs-3"></i></button>
-        <div class="collapse navbar-collapse justify-content-end" id="menu">
+        <button class="navbar-toggler ms-auto" data-bs-toggle="collapse" data-bs-target="#nv"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse justify-content-end" id="nv">
           <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#hero">Beranda</a></li>
-            <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
-            <li class="nav-item"><a class="nav-link" href="#proyek">Proyek</a></li>
-            <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+            <li class="nav-item"><a class="nav-link" href="#hero">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#project">project</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
           </ul>
         </div>
       </div>
     </nav>
 
     <!-- HERO -->
-    <section id="hero">
-      <div class="container">
-        <div class="row align-items-center g-5">
-          <div class="col-md-5 order-md-2">
-            <!-- FOTO: simpan di folder img/ dengan nama foto-hero.jpg -->
-            <div class="ph ph-hero">foto kamu<img src="img/me.jpeg" alt="" onerror="this.remove()" /></div>
-          </div>
-          <div class="col-md-7 order-md-1">
-            <h1 class="display-5 mb-3">Halo, saya Zahra Shafarani,<br /></h1>
-            <p class="redup mb-4" style="max-width: 46ch">selamat datang</p>
-            <a href="#proyek" class="tombol tombol-isi me-2 mb-2">Lihat proyek</a>
-            <a href="files/cv.pdf" class="tombol tombol-garis mb-2" download>Unduh CV</a>
-          </div>
-        </div>
+    <section class="sec" id="hero">
+      <div class="stars-layer"></div>
+      <div class="container text-center">
+        <div class="oval hero-oval"><h1 class="ttl" data-title="portfolio">PORTFOLIO</h1></div>
       </div>
     </section>
 
-    <!-- TENTANG -->
-    <section id="tentang" class="alt">
+    <!-- ABOUT -->
+    <section class="sec" id="about">
+      <div class="stars-layer"></div>
       <div class="container">
-        <div style="max-width: 640px">
-          <h2 class="mb-3">Tentang saya</h2>
-          <p class="redup">
-            Halo! Saya Zahra Shafarani, seorang pelajar yang saat ini menempuh pendidikan di SMK dengan jurusan Pengembangan Perangkat Lunak dan Gim (PPLG). Meskipun saya mempelajari bidang pemrograman dan teknologi, saya juga memiliki
-            ketertarikan yang cukup besar pada dunia menggambar, desain, dan digital art. Saya menikmati proses menuangkan ide dan kreativitas ke dalam bentuk visual. Saat ini saya masih dalam tahap belajar dan terus mencoba berbagai gaya
-            serta teknik dalam membuat karya. Bagi saya, setiap karya merupakan bagian dari proses untuk mengembangkan kemampuan, mengeksplorasi kreativitas, dan menemukan gaya yang sesuai dengan diri saya. Portofolio ini berisi beberapa
-            karya desain dan digital art yang saya buat selama proses belajar dan bereksplorasi.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROYEK -->
-    <section id="proyek">
-      <div class="container">
-        <h2 class="mb-4">Proyek pilihan</h2>
-        <div class="mb-4">
-          <button class="filter-btn aktif" data-filter="all">Semua</button>
-          <button class="filter-btn" data-filter="design">Design</button>
-          <button class="filter-btn" data-filter="digital-art">Digital Art</button>
-          <!-- tambah kategori: <button class="filter-btn" data-filter="nama">Nama</button> -->
-        </div>
-        <div class="row g-4 g-md-5">
-          <!-- Salin satu blok .proyek untuk menambah proyek. data-kategori: design atau digital-art (boleh keduanya, pisah dengan spasi) -->
-          <div class="col-md-6 proyek" data-kategori="design">
-            <div class="ph ph-proyek">foto proyek 1<img src="img/1.jpeg" alt="" onerror="this.remove()" /></div>
-            <h5>Food Bazaar Menu Design</h5>
-            <p class="redup small mb-0">
-              Proyek desain menu makanan dan minuman untuk kegiatan bazar kelas. Desain ini menggabungkan tipografi dekoratif, warna cerah, serta elemen visual bertema piknik musim panas untuk menciptakan tampilan yang menarik dan sesuai
-              dengan suasana bazar. Proyek ini menjadi penerapan kreativitas dalam merancang media promosi yang informatif sekaligus menarik secara visual.
-            </p>
-          </div>
-          <div class="col-md-6 proyek" data-kategori="digital-art">
-            <div class="ph ph-proyek">foto proyek 2<img src="img/2.jpeg" alt="" onerror="this.remove()" /></div>
-            <h5>Mochi dango</h5>
-            <p class="redup small mb-0">
-              Ilustrasi digital bertema mochi dango yang mengeksplorasi bentuk, warna, dan efek glossy untuk menciptakan visual makanan yang menarik. Perpaduan warna cerah dan detail dekoratif memberikan karakter unik pada karya, sekaligus
-              menjadi media untuk mengembangkan kreativitas dan keterampilan ilustrasi digital.
-            </p>
-          </div>
-          <div class="col-md-6 proyek" data-kategori="design">
-            <div class="ph ph-proyek">foto proyek 3<img src="img/3.jpeg" alt="" onerror="this.remove()" /></div>
-            <h5>Summer K-Pop Fan Edit</h5>
-            <p class="redup small mb-0">
-              Desain fan edit bertema musim panas yang menampilkan foto idol K-pop melalui perpaduan tipografi dekoratif, elemen tropis, dan warna-warna cerah. Penataan foto, pemilihan ornamen, serta kombinasi elemen grafis dirancang untuk
-              menciptakan komposisi yang ekspresif dengan nuansa summer yang ceria dan playful.
-            </p>
-          </div>
-          <div class="col-md-6 proyek" data-kategori="digital-art">
-            <div class="ph ph-proyek">foto proyek 4<img src="img/4.jpeg" alt="" onerror="this.remove()" /></div>
-            <h5>blueberry cake</h5>
-            <p class="redup small mb-0">
-              Ilustrasi digital bertema blueberry cake yang mengeksplorasi perpaduan warna, detail dekoratif, dan bentuk untuk menghadirkan visual dessert yang menarik. Karya ini berfokus pada pengembangan kreativitas melalui pengolahan
-              elemen visual menjadi ilustrasi yang memiliki karakter dan daya tarik tersendiri.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- KONTAK -->
-    <section id="kontak" class="alt">
-      <div class="container">
-        <div class="row g-5">
+        <div class="row align-items-center g-4">
           <div class="col-md-5">
-            <h2 class="mb-3">Kerja sama yuk</h2>
-            <p class="redup mb-1">tuliskan saran dan kritik kalian</p>
+            <div class="polaroid"><img id="photo" alt="foto" /><span class="nm" id="nameTag"></span></div>
+          </div>
+          <div class="col-md-7">
+            <div class="about-ttl mb-3">
+              <h2 class="ttl d-inline-block" data-title="about">ABOUT</h2>
+              <span class="oval"><span class="ttl" data-title="aboutMe" style="font-size: 2.6rem">Mee</span></span>
+            </div>
+            <div class="box about-box" id="aboutText"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <!-- Pesan dikirim ke Google Sheets. Panduan ada di file kode-google-sheets.gs -->
-            <form id="form-kontak" class="mt-3">
-              <input class="form-control mb-3" type="text" name="nama" placeholder="Nama" required />
-              <input class="form-control mb-3" type="email" name="email" placeholder="Email" required />
-              <textarea class="form-control mb-3" name="pesan" rows="4" placeholder="Pesan" required></textarea>
-              <input type="text" name="website" tabindex="-1" autocomplete="off" style="position: absolute; left: -9999px" aria-hidden="true" />
-              <button class="tombol tombol-isi" type="submit">Kirim pesan</button>
-              <p id="status-form" class="small mt-3 mb-0" role="status"></p>
+    <!-- PROJECT -->
+    <section class="sec" id="project">
+      <div class="stars-layer"></div>
+      <div class="container">
+        <div class="row align-items-center mb-4 g-3">
+          <div class="col-lg-6 order-lg-1 order-2" id="filters"></div>
+          <div class="col-lg-6 order-lg-2 order-1 proj-ttl"><h2 class="ttl" data-title="project">My Project</h2></div>
+        </div>
+        <div id="projects"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="sec" id="contact">
+      <div class="stars-layer"></div>
+      <div class="container">
+        <div class="row g-4 align-items-start">
+          <div class="col-md-5 c-ttl">
+            <div class="oval"><h2 class="ttl" data-title="contact">Contact</h2></div>
+            <div class="box note" id="note"></div>
+          </div>
+          <div class="col-md-7">
+            <form class="box cform" id="cform">
+              <label for="fn">name</label><input id="fn" type="text" name="name" placeholder="nama kamu" required /> <label for="fe">email</label><input id="fe" type="email" name="email" placeholder="email@kamu.com" required />
+              <label for="fm">massage</label><textarea id="fm" name="message" rows="4" placeholder="tulis pesan di sini..." required></textarea> <button type="submit">Kirim</button>
+              <div class="clearfix"></div>
             </form>
           </div>
         </div>
       </div>
     </section>
 
-    <footer>
-      <div class="container d-flex justify-content-between align-items-center">
-        <span class="redup">© <span id="tahun"></span> Zahra Shafarani</span>
-        <!-- Ganti # dengan link akun kamu -->
-        <span class="sosmed">
-          <a href="https://www.tiktok.com/@ranib0wy" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
-          <a href="https://www.instagram.com/@raniivv" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-        </span>
-      </div>
+    <!-- FOOTER -->
+    <footer class="bar py-3">
+      <div class="container d-flex justify-content-between align-items-center"><span id="copy"></span><span id="socials"></span></div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      document.querySelectorAll(".filter-btn").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          document.querySelectorAll(".filter-btn").forEach(function (b) {
-            b.classList.remove("aktif");
-          });
-          btn.classList.add("aktif");
-          var f = btn.dataset.filter;
-          document.querySelectorAll(".proyek").forEach(function (p) {
-            p.style.display = f === "all" || p.dataset.kategori.split(" ").indexOf(f) > -1 ? "" : "none";
-          });
+      /* =====================================================
+   ✏️ BAGIAN YANG BISA KAMU GANTI — EDIT DI SINI SAJA
+   ===================================================== */
+      const CONFIG = {
+        name: "Zahra shafarani", // nama di foto & footer
+        photo: "img/mee.jpeg", // contoh: "img/fotoku.jpg" (kosong = placeholder)
+        /* deskripsi diri: tulis di antara tanda ` ` (backtick, tombol di kiri angka 1).
+     Di dalam backtick kamu BEBAS tekan Enter, panjang berapa pun, dan tanda kutip " ' juga aman. */
+        about: `Halo! Saya Zahra Shafarani, seorang pelajar yang saat ini menempuh pendidikan di SMK dengan jurusan Pengembangan Perangkat Lunak dan Gim (PPLG). Meskipun saya mempelajari bidang pemrograman dan teknologi, saya juga memiliki
+            ketertarikan yang cukup besar pada dunia menggambar, desain, dan digital art. Saya menikmati proses menuangkan ide dan kreativitas ke dalam bentuk visual. Saat ini saya masih dalam tahap belajar dan terus mencoba berbagai gaya
+            serta teknik dalam membuat karya. Bagi saya, setiap karya merupakan bagian dari proses untuk mengembangkan kemampuan, mengeksplorasi kreativitas, dan menemukan gaya yang sesuai dengan diri saya. Portofolio ini berisi beberapa
+            karya desain dan digital art yang saya buat selama proses belajar dan bereksplorasi.`,
+        note: "isi kritik saran !",
+        email: "emailkamu@gmail.com", // cadangan: dipakai kalau sheetUrl di bawah masih kosong
+        sheetUrl: "https://script.google.com/macros/s/AKfycbx3Ebhv-1ryBevbdegL9DNWbiybJiVUhe6kpMyB-jP8Ykv5nc78j0AGypt7lTsRXvkN6g/exec", // tempel link Web App Google Apps Script (berakhiran /exec) di sini
+        socials: [
+          // tambah/hapus bebas
+          { icon: "bi-instagram", url: "https://instagram.com/raniivv" },
+          { icon: "bi-tiktok", url: "https://tiktok.com/@ranib0wy" },
+        ],
+        categories: ["ALL", "Design", "digital art"], // tombol filter
+        /* ➕ CARA TAMBAH PROJECT: copy satu baris { ... }, tempel di bawahnya (jangan lupa koma di akhir baris),
+        lalu ganti isinya. Hapus baris kalau mau mengurangi.
+     Ukuran kartu otomatis mengikuti urutan (kecil, besar, besar, kecil, kecil, besar, ...) seperti desain asli.
+     image = path gambar project, contoh "img/project1.jpg" (kosong = kotak putih bertuliskan judul) */
+        /* cara foto project ditampilkan:
+     "auto"    = ukuran & rasio ASLI fotomu dipakai, tanpa kotak putih (default)
+     "contain" = foto utuh di kotak putih berukuran tetap desain
+     "cover"   = kotak penuh tapi foto bisa terpotong */
+        imageFit: "auto",
+        projects: [
+          {
+            title: "Bazaar menu makanan",
+            desc: `              Proyek desain menu makanan dan minuman untuk kegiatan bazar kelas. Desain ini menggabungkan tipografi dekoratif, warna cerah, serta elemen visual bertema piknik musim panas untuk menciptakan tampilan yang menarik dan sesuai
+              dengan suasana bazar. Proyek ini menjadi penerapan kreativitas dalam merancang media promosi yang informatif sekaligus menarik secara visual.`,
+            category: "Design",
+            image: "img/1.jpeg",
+            link: "",
+          },
+          {
+            title: "mochi dango",
+            desc: `Ilustrasi digital bertema mochi dango yang mengeksplorasi bentuk, warna, dan efek glossy untuk menciptakan visual makanan yang menarik. Perpaduan warna cerah dan detail dekoratif memberikan karakter unik pada karya, sekaligus
+              menjadi media untuk mengembangkan kreativitas dan keterampilan ilustrasi digital.`,
+            category: "digital art",
+            image: "img/2.jpeg",
+            link: "",
+          },
+          {
+            title: "Summer K-Pop Fan Edit",
+            desc: ` Desain fan edit bertema musim panas yang menampilkan foto idol K-pop melalui perpaduan tipografi dekoratif, elemen tropis, dan warna-warna cerah. Penataan foto, pemilihan ornamen, serta kombinasi elemen grafis dirancang untuk
+              menciptakan komposisi yang ekspresif dengan nuansa summer yang ceria dan playful.
+            
+
+            `,
+            category: "Design",
+            image: "img/3.jpeg",
+            link: "",
+          },
+          {
+            title: "Blueberry cake",
+            desc: ` Ilustrasi digital bertema blueberry cake yang mengeksplorasi perpaduan warna, detail dekoratif, dan bentuk untuk menghadirkan visual dessert yang menarik. Karya ini berfokus pada pengembangan kreativitas melalui pengolahan
+              elemen visual menjadi ilustrasi yang memiliki karakter dan daya tarik tersendiri.`,
+            category: "digital art",
+            image: "img/4.jpeg",
+            link: "",
+          },
+        ],
+        /* Judul bergaya stiker: isi dengan file PNG transparan agar 100% mirip desain.
+     Kosong = pakai teks biasa sebagai cadangan. */
+        titles: { portfolio: "", about: "", aboutMe: "", project: "", contact: "" },
+        /* Bintang dekorasi: [kiri%, atas%, ukuran px, warna] */
+        stars: [
+          [2, 12, 90, "#f58ad8"],
+          [18, 2, 70, "#c5f56a"],
+          [80, 5, 80, "#c5f56a"],
+          [90, 35, 110, "#f58ad8"],
+          [6, 68, 110, "#7ff5e0"],
+          [48, 75, 80, "#7ff5e0"],
+          [70, 60, 40, "#ffe94d"],
+          [30, 50, 38, "#b995f5"],
+        ],
+      };
+      /* ===================== AKHIR BAGIAN EDIT ===================== */
+
+      const $ = (s) => document.querySelector(s);
+      const ph =
+        "data:image/svg+xml;utf8," +
+        encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500"><rect width="100%" height="100%" fill="#ddd"/><text x="50%" y="50%" text-anchor="middle" fill="#888" font-size="28">foto</text></svg>');
+
+      $("#photo").src = CONFIG.photo || ph;
+      $("#nameTag").textContent = CONFIG.name;
+      $("#aboutText").textContent = CONFIG.about;
+      $("#note").textContent = CONFIG.note;
+      $("#copy").textContent = "© " + CONFIG.name;
+
+      // judul gambar
+      document.querySelectorAll("[data-title]").forEach((el) => {
+        const src = CONFIG.titles[el.dataset.title];
+        if (src) el.innerHTML = `<img src="${src}" alt="${el.textContent}" style="max-height:${el.dataset.title === "portfolio" ? "70%" : "120px"}">`;
+        if (src) el.style.cssText += ";-webkit-text-stroke:0;transform:none";
+      });
+
+      // judul hero: huruf berukuran & miring berbeda-beda seperti desain asli
+      const hero = document.querySelector('[data-title="portfolio"]');
+      if (!CONFIG.titles.portfolio) {
+        const rot = [-6, 8, -4, 7, -9, 5, -3, 9, -6],
+          sc = [1.25, 1.1, 1.3, 1.05, 1.35, 1.15, 1.3, 1.1, 1.4],
+          fs = [1, 1.15, 0.95, 1.1, 1, 1.15, 0.9, 1.1, 1.15];
+        hero.innerHTML = [...hero.textContent].map((ch, i) => `<span style="--i:${i};transform:rotate(${rot[i % 9]}deg) scaleY(${sc[i % 9]});font-size:${fs[i % 9]}em">${ch}</span>`).join("");
+      }
+
+      // socials (Bootstrap Icons)
+      document.head.insertAdjacentHTML("beforeend", '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">');
+      $("#socials").innerHTML = CONFIG.socials.map((s) => `<a href="${s.url}" target="_blank"><i class="bi ${s.icon}"></i></a>`).join("");
+
+      // bintang
+      document.querySelectorAll(".stars-layer").forEach((layer, i) => {
+        CONFIG.stars.forEach((s, k) => {
+          const d = document.createElement("div");
+          d.className = "star";
+          const flip = (i + k) % 2 ? 1 : -1;
+          d.style.cssText = `left:${(s[0] + i * 13) % 96}%;top:${(s[1] + i * 17 + k * 3) % 90}%;width:${s[2]}px;--c:${s[3]};--r:${flip * (8 + k * 7)}deg;--d:${5 + (k % 4) * 1.5}s;animation-delay:-${k * 0.9}s`;
+          layer.appendChild(d);
         });
       });
-      document.getElementById("tahun").textContent = new Date().getFullYear();
 
-      // ===== FORM KONTAK -> GOOGLE SHEETS =====
-      // Tempel URL Web App dari Google Apps Script di sini (langkahnya ada di kode-google-sheets.gs)
-      var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx3Ebhv-1ryBevbdegL9DNWbiybJiVUhe6kpMyB-jP8Ykv5nc78j0AGypt7lTsRXvkN6g/exec";
+      // kilauan ✦
+      document.querySelectorAll(".stars-layer").forEach((layer, i) => {
+        [
+          [12, 22, 30],
+          [86, 14, 38],
+          [72, 78, 26],
+          [24, 86, 34],
+          [52, 8, 24],
+          [94, 60, 28],
+        ].forEach((p, k) => {
+          const sp = document.createElement("span");
+          sp.className = "spark";
+          sp.textContent = "✦";
+          sp.style.cssText = `left:${(p[0] + i * 7) % 95}%;top:${(p[1] + i * 9) % 90}%;font-size:${p[2]}px;animation-delay:${(k * 0.5 + i * 0.3) % 3}s`;
+          layer.appendChild(sp);
+        });
+      });
 
-      var form = document.getElementById("form-kontak");
-      var status = document.getElementById("status-form");
-      form.addEventListener("submit", function (e) {
+      // animasi muncul saat di-scroll
+      document.querySelectorAll(".polaroid,.about-ttl,.about-box,.proj-ttl,#filters,.c-ttl,.cform").forEach((el) => el.classList.add("reveal"));
+      const io =
+        "IntersectionObserver" in window
+          ? new IntersectionObserver(
+              (es) =>
+                es.forEach((e) => {
+                  if (e.isIntersecting) {
+                    e.target.classList.add("in");
+                    io.unobserve(e.target);
+                  }
+                }),
+              { threshold: 0.15 },
+            )
+          : null;
+      function observeReveal() {
+        document.querySelectorAll(".reveal:not(.in)").forEach((el, i) => {
+          el.style.transitionDelay = (el.classList.contains("pcard") ? (i % 2) * 0.15 : 0) + "s";
+          io ? io.observe(el) : el.classList.add("in");
+        });
+      }
+
+      // project + filter
+      function card(p, type) {
+        return `<a class="pcard ${type} fit-${CONFIG.imageFit || "auto"} reveal" ${p.link ? `href="${p.link}" target="_blank"` : ""}>
+    <div class="thumb">${p.image ? `<img src="${p.image}" alt="${p.title}">` : p.title}</div><p>${p.desc}</p></a>`;
+      }
+      function renderProjects(cat) {
+        const list = CONFIG.projects.filter((p) => cat === "ALL" || p.category === cat);
+        let html = "";
+        for (let i = 0; i < list.length; i += 2) {
+          html += `<div class="prow"><div class="c-s">${card(list[i], "small")}</div>` + (list[i + 1] ? `<div class="c-b">${card(list[i + 1], "big")}</div>` : "") + `</div>`;
+        }
+        $("#projects").innerHTML = html;
+        observeReveal();
+      }
+      $("#filters").innerHTML = CONFIG.categories.map((c, i) => `<button class="pill ${i ? "" : "active"}" data-c="${c}">${c}</button>`).join("");
+      $("#filters").addEventListener("click", (e) => {
+        const b = e.target.closest(".pill");
+        if (!b) return;
+        document.querySelectorAll(".pill").forEach((x) => x.classList.remove("active"));
+        b.classList.add("active");
+        renderProjects(b.dataset.c);
+      });
+      renderProjects("ALL");
+      observeReveal();
+
+      // form contact -> Google Spreadsheet (kalau sheetUrl diisi), kalau kosong buka aplikasi email
+      $("#cform").addEventListener("submit", async (e) => {
         e.preventDefault();
-        if (SCRIPT_URL.indexOf("GANTI") === 0) {
-          status.textContent = "Form belum disambungkan ke Google Sheets.";
+        const form = e.target,
+          f = new FormData(form),
+          btn = form.querySelector("button");
+        if (!CONFIG.sheetUrl) {
+          location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent("Pesan dari " + f.get("name"))}&body=${encodeURIComponent(f.get("message") + "\n\n" + f.get("email"))}`;
           return;
         }
-        status.textContent = "Mengirim...";
-        fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", body: new URLSearchParams(new FormData(form)) })
-          .then(function () {
-            status.textContent = "Terima kasih, pesanmu sudah terkirim.";
-            form.reset();
-          })
-          .catch(function () {
-            status.textContent = "Gagal mengirim. Coba lagi nanti.";
-          });
+        const old = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = "Mengirim...";
+        try {
+          await fetch(CONFIG.sheetUrl, { method: "POST", mode: "no-cors", body: new URLSearchParams(f) });
+          btn.textContent = "Terkirim ✓";
+          form.reset();
+        } catch (err) {
+          btn.textContent = "Gagal, coba lagi";
+        }
+        setTimeout(() => {
+          btn.textContent = old;
+          btn.disabled = false;
+        }, 2500);
       });
     </script>
   </body>
